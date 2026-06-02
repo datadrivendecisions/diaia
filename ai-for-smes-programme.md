@@ -70,7 +70,7 @@ The handbook is the shared capstone that **unifies the two modules** and justifi
 | **Question answered** | *Should an SME do this, and why?* | *How is it built, and how does it run?* |
 | **Student profile** | Business-facing | Builders (no-code → light-Python → full agentic, per the three sketches) |
 
-**Platform template.** The sister module need not start from scratch: the **AI Wiki** at `/Projects/ai-wiki` is a working **Quartz "digital-garden"** — LLM-maintained, human-curated, already publishing 138 sources. It is the proven, low-risk template for the handbook platform and its curation method.
+**Platform template.** The sister module need not start from scratch: the **AI Wiki** at [businessdatasolutions.github.io/ai-wiki](https://businessdatasolutions.github.io/ai-wiki/) is a working **Quartz "digital-garden"** — LLM-maintained, human-curated, already publishing 138 sources. It is the proven, low-risk template for the handbook platform and its curation method.
 
 ## 3.3 A team's through-line
 
@@ -214,7 +214,7 @@ A usable shell around the thematic Parts: **Start here** (orientation for an SME
 
 A handbook is a multi-year asset; no single 7-week cohort can finish it — and it shouldn't have to. The **seven questions are stable**; the material under them **compounds**.
 
-- **Compounding across cohorts.** Each cohort adds new chapters and refreshes existing ones — maintenance, not authorship from zero. This is precisely what the digital-garden / LLM-wiki pattern is built for (see `/Projects/ai-wiki`).
+- **Compounding across cohorts.** Each cohort adds new chapters and refreshes existing ones — maintenance, not authorship from zero. This is precisely what the digital-garden / LLM-wiki pattern is built for (see [businessdatasolutions.github.io/ai-wiki](https://businessdatasolutions.github.io/ai-wiki/)).
 - **Editorial / curation layer.** Nothing reaches a real SME unreviewed. A teacher (optionally with an expert partner) curates and approves chapters before publication — the "human-curated" half of the LLM-wiki pattern.
 - **Quality bar & disclaimers.** A short chapter rubric (clarity, accuracy, responsible-AI coverage, usefulness to an owner) plus the standing "educational, not consultancy" disclaimer.
 - **IP & confidentiality.** Real SME cases are anonymised or published only with consent; sensitive data never enters the public handbook.
@@ -342,7 +342,7 @@ All readings/viewings above are drawn from the AI Wiki corpus ([businessdatasolu
 # Appendix B — Source documents & method
 
 - **EU competitiveness agenda** (`background-docs/`): Draghi, *Address at the presentation of the report*; *Speech, One Year After*; *The Future of European Competitiveness — A Competitiveness Strategy for Europe*; European Commission, *Competitiveness Compass* (Communication & Factsheet); von der Leyen, *One Year After the Draghi Report* keynote.
-- **Method & platform template:** the AI Wiki (`/Projects/ai-wiki`) — a Quartz digital garden, LLM-maintained and human-curated.
+- **Method & platform template:** the AI Wiki ([businessdatasolutions.github.io/ai-wiki](https://businessdatasolutions.github.io/ai-wiki/)) — a Quartz digital garden, LLM-maintained and human-curated.
 - **Module context:** [module-overview.md](module-overview.md), [module-redesign-sketches.md](module-redesign-sketches.md).
 
 *Figures and quotations are drawn from the background documents above. Where a precise figure was not directly verifiable in the source text, it has been omitted rather than estimated.*
