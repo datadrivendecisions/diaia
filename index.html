@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI for SMEs — DIAIA Programme &amp; Living Handbook</title>
+<style>
+/* ================================================================
+   Business Data Solutions — brand system (palette C "strict minimal")
+   Inlined from stylebook/shared.css + handbook-specific additions.
+   ================================================================ */
+:root {
+  --primary: #d4db3e;
+  --supporting: #1a1a1a;
+  --cream: #f5f0e6;
+  --bg-yellow: #fafbf0;
+  --bg-cream: #f5f0e6;
+  --bg-cream-2: #f0ebe0;
+  --bg-off-white: #f9f8f4;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --bg-page: #ffffff;
+  --bg-section: #f9fafb;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --text-xs: 0.75rem;  --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem;  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem;
+  --space-20: 5rem;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 2px 6px rgba(0,0,0,.04);
+  --shadow-md: 0 2px 4px rgba(0,0,0,.06), 0 8px 16px rgba(0,0,0,.06);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.08), 0 16px 32px rgba(0,0,0,.08);
+  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px; --radius-full: 9999px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { background: var(--bg-yellow); }
+
+/* NAV */
+.bds-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-4) var(--space-8);
+}
+.bds-nav-inner {
+  max-width: 1024px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-6); flex-wrap: wrap;
+}
+.bds-wordmark {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-weight: 700; font-size: var(--text-xl);
+  text-decoration: none; color: var(--text-primary);
+}
+.bds-wordmark svg { width: 28px; height: 28px; flex-shrink: 0; }
+.bds-wordmark:hover { background: transparent; }
+.bds-nav-tag {
+  font-size: var(--text-sm); color: var(--text-muted);
+}
+
+/* PAGE LAYOUT */
+.bds-page {
+  max-width: 880px; margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-20);
+}
+.bds-page-header {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--border);
+}
+.bds-eyebrow {
+  font-size: var(--text-xs); text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-muted);
+  font-weight: 600; margin-bottom: var(--space-2);
+}
+h1.bds-h1 { font-size: var(--text-4xl); font-weight: 700; margin: 0 0 var(--space-6); line-height: 1.15; }
+
+.lead-quote {
+  margin: 0 0 var(--space-6); padding: var(--space-4) var(--space-6);
+  border-left: 4px solid var(--primary);
+  background: var(--bg-yellow);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-lg); color: var(--text-secondary);
+}
+.lead-quote em { font-style: italic; }
+
+/* Part headers (markdown level-1 "# Part …" / "# Appendix …") */
+h2.bds-part {
+  font-size: var(--text-3xl); font-weight: 700; line-height: 1.2;
+  margin: var(--space-20) 0 var(--space-6);
+  padding-top: var(--space-8);
+  border-top: 2px solid var(--supporting);
+}
+h2.bds-part::before {
+  content: ""; display: block;
+  width: 48px; height: 5px; background: var(--primary);
+  border-radius: var(--radius-full); margin-bottom: var(--space-4);
+}
+
+/* Sub-sections (markdown level-2 "## …") */
+h3 {
+  font-size: var(--text-xl); font-weight: 700;
+  margin: var(--space-12) 0 var(--space-3); line-height: 1.3;
+}
+
+p { margin: 0 0 var(--space-4); }
+ul, ol { margin: 0 0 var(--space-4); padding-left: var(--space-6); }
+li { margin: 0 0 var(--space-2); }
+li > ul, li > ol { margin-top: var(--space-2); }
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* Inline blockquote separators (the leading ── rules become breathing room) */
+hr { border: none; border-top: 1px solid var(--border); margin: var(--space-12) 0; }
+
+/* Tables */
+.tbl-wrap { overflow-x: auto; margin: var(--space-6) 0; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: var(--text-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md); overflow: hidden;
+}
+thead th {
+  background: var(--bg-cream);
+  text-align: left; font-weight: 700;
+  border-bottom: 2px solid var(--border-strong);
+}
+th, td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: top; line-height: 1.5;
+}
+th:last-child, td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(--bg-off-white); }
+td a { word-break: break-word; }
+
+/* Theme cards (Part 4) */
+.theme {
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-8);
+  margin: var(--space-8) 0;
+}
+.theme h3 { margin-top: 0; }
+.theme-help { color: var(--text-secondary); }
+.theme .angles { list-style: none; padding-left: 0; }
+.theme .angles > li {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border);
+}
+.theme .angles > li:first-child { border-top: none; }
+.src {
+  display: block; margin-top: var(--space-2);
+  font-size: var(--text-sm); color: var(--text-secondary);
+}
+.illus { margin-top: var(--space-4); margin-bottom: 0; color: var(--text-muted); font-size: var(--text-sm); }
+
+/* Code */
+code {
+  font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.9em; background: var(--bg-section);
+  padding: 0.15em 0.4em; border-radius: 4px; border: 1px solid var(--border);
+}
+
+/* Footer */
+.bds-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-8); background: var(--bg-section);
+  text-align: center; color: var(--text-muted); font-size: var(--text-sm);
+}
+.bds-footer-inner { max-width: 1024px; margin: 0 auto; }
+.bds-footer .bds-wordmark { font-size: var(--text-base); margin-bottom: var(--space-2); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bds-nav { padding: var(--space-3) var(--space-4); }
+  .bds-page { padding: var(--space-8) var(--space-4) var(--space-12); }
+  h1.bds-h1 { font-size: var(--text-3xl); }
+  h2.bds-part { font-size: var(--text-2xl); }
+  .theme { padding: var(--space-4) var(--space-4); }
+}
+</style>
+</head>
+<body>
+
+<nav class="bds-nav">
+  <div class="bds-nav-inner">
+    <a href="#top" class="bds-wordmark">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Business Data Solutions">
+        <g fill="#1a1a1a">
+          <polygon points="9,29 11,10 17,10 19,29"/>
+          <polygon points="8,8.5 20,8.5 19,10 9,10"/>
+          <rect x="11" y="5" width="6" height="3.5"/>
+          <path d="M10.5 5 Q10.5 1.5 14 1.5 Q17.5 1.5 17.5 5 Z"/>
+          <rect x="13.5" y="0" width="1" height="1.8"/>
+        </g>
+        <rect x="13" y="6" width="2" height="2" fill="#d4db3e"/>
+        <g stroke="#d4db3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M21 4 L26 7 L21 10"/>
+          <path d="M26 4 L31 7 L26 10"/>
+        </g>
+      </svg>
+      <span>Business Data Solutions</span>
+    </a>
+    <span class="bds-nav-tag">AI for SMEs — Handbook</span>
+  </div>
+</nav>
+
+<main class="bds-page" id="top">
+
+  <header class="bds-page-header">
+    <div class="bds-eyebrow">HAN · DIAIA</div>
+    <h1 class="bds-h1">AI for SMEs — DIAIA Programme &amp; Living Handbook</h1>
+    <blockquote class="lead-quote"><em>HAN students build a living, interactive handbook that helps regional manufacturing SMEs put AI to work — and in doing so contribute, bottom-up, to European competitiveness.</em></blockquote>
+    <p>This document brings together three things in one story:</p>
+    <ul>
+      <li><strong>Why</strong> the programme exists (the mission),</li>
+      <li><strong>What</strong> students build (the handbook) and <strong>how</strong> it sits in the curriculum (the two modules, the weekly themes, assessment),</li>
+      <li><strong>The structure</strong> that ties studying and building together: seven weekly themes, each posed as an SME-facing question, each backed by curated readings and viewings.</li>
+    </ul>
+    <p>It develops the DIAIA redesign in <a href="module-overview.md">module-overview.md</a> and <a href="module-redesign-sketches.md">module-redesign-sketches.md</a>, and grounds the mission in the EU competitiveness agenda (see <code>background-docs/</code>).</p>
+    <p><strong>How to read it.</strong> Part 1 is the <em>why</em>. Part 2 is <em>what we build</em>. Part 3 is <em>how it runs in the curriculum</em>. Part 4 is the <em>heart</em> — the seven themes, each as an SME question with its study angles and readings. Part 5 is <em>how it operates over time</em> (governance, partners, assessment, risks, roadmap). The appendix is the full source index.</p>
+  </header>
+
+  <section>
+    <h2 class="bds-part">Part 1 — Why this exists: the mission</h2>
+
+    <h3>1.1 Vision</h3>
+    <p>HAN University of Applied Sciences students build and continuously extend an <strong>interactive, living handbook — "AI for SMEs"</strong> — for the manufacturing SMEs (<em>maakindustrie</em>) of our region (Achterhoek / East Netherlands). The handbook offers two things every small firm lacks the time to assemble for itself: <strong>inspiration</strong> (what AI can realistically do for a business like mine) and <strong>tooling</strong> (how to actually start — patterns, checklists, guardrails, and accessible tools). It is <strong>authored by the business-facing module (DIAIA)</strong> and <strong>built and maintained as an interactive platform by the technical sister module</strong>. Each cohort adds and refreshes chapters, so the book compounds over time.</p>
+    <p><strong>Tagline:</strong> <em>Helping our region's makers put AI to work — one practical use case at a time.</em></p>
+
+    <h3>1.2 The European competitiveness mission</h3>
+    <p>The handbook is a small, concrete contribution to the defining economic question facing Europe — laid out in the <strong>Draghi report on European competitiveness</strong> and the European Commission's <strong>Competitiveness Compass</strong> (both in <code>background-docs/</code>).</p>
+    <p>The headline problem is not a lack of frontier technology; it is <strong>diffusion</strong> — getting proven AI into the hands of ordinary firms:</p>
+    <ul>
+      <li>The EU–US gap in the <em>level</em> of GDP widened from <strong>just over 15% (2002) to 30% (2023)</strong> — and <em>"around 70% of the gap in per capita GDP with [the] US at PPP is explained by lower productivity in the EU."</em> In other words, Europe's income gap is a <strong>productivity</strong> problem, not a "Europeans work less" one. — <em>Draghi</em></li>
+      <li><strong>SME AI adoption is still only 13–21%</strong>, and only about <strong>10% of manufacturing firms</strong> used AI in the last year — even though EU firms hold <strong>over half</strong> the global market in industrial automation, the foundation of industrial AI.</li>
+      <li><em>"Many industrial applications of AI do not require the latest advances in generative AI, so it's well within our reach to accelerate AI uptake with a concerted effort to support companies."</em> — <em>Draghi</em></li>
+      <li>The Commission's answer is the <strong>"Apply AI" strategy</strong> — mainstreaming AI into manufacturing and SMEs, not just funding frontier models. Von der Leyen: <em>"This time, Europe is not playing catch-up — we are among the frontrunners,"</em> citing <strong>67% year-on-year growth</strong> in EU businesses adopting AI off a low base.</li>
+      <li>The stakes are framed in existential terms: without action Europe risks a <em>"slow agony"</em> and, in Draghi's words, becoming <em>"less prosperous, less equal, less secure and, as a result, less free to choose our destiny."</em></li>
+    </ul>
+    <p><strong>The leverage point is exactly where our students sit.</strong> A handbook that helps regional manufacturers adopt <em>practical, non-frontier</em> AI is, almost literally, the <em>"concerted effort to support companies"</em> Draghi calls for and the <em>Apply AI</em> diffusion the Compass funds — executed bottom-up, in our own region.</p>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Part 2 — What we're building: the handbook</h2>
+    <p><strong>Audience.</strong> Owners, managers and operators of regional manufacturing SMEs — and the advisers, students and ecosystem partners who support them. Written for a busy non-technical reader.</p>
+    <p><strong>Value proposition — two halves:</strong></p>
+    <ul>
+      <li><strong>Inspiration</strong> — <em>what's possible</em>: real and archetypal use cases (predictive maintenance, quality vision, demand forecasting, document/quote automation, shop-floor copilots), each told as a short, concrete story with the business outcome up front.</li>
+      <li><strong>Tooling</strong> — <em>how to start</em>: use-case patterns, decision checklists, a "first five steps" for an owner, responsible-AI and GDPR guardrails, and pointers to accessible (often no-code) tools and regional support.</li>
+    </ul>
+    <p><strong>Positioning.</strong> The handbook is <strong>educational, not consultancy.</strong> Every chapter carries a clear disclaimer: it offers inspiration and starting points, not commercial advice or guarantees. This protects students, the university, and the SMEs who read it.</p>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Part 3 — How it runs in the curriculum</h2>
+
+    <h3>3.1 The handbook as DIAIA's integrated task</h3>
+    <p>The handbook becomes the <strong>single integrated professional task</strong> of the redesigned DIAIA — replacing the abstract "design a decision agent + report" with <strong>"author a chapter of the handbook"</strong>: the <strong>SME-translation of one weekly theme</strong>, illustrated by a use case.</p>
+    <ul>
+      <li><strong>The book is organised by the seven weekly themes</strong> (Part 4), each posed as an SME-facing question. A team takes <strong>one theme and one elective angle</strong>, writes the <strong>SME-translation guidance</strong>, and <strong>grounds it in a single illustrative use case taken through CRISP-DM</strong> (Business Understanding → Data → Preparation → Modelling → Evaluation → Deployment). DIAIA's CRISP-DM spine is retained — now in service of a real, publishable artifact.</li>
+      <li>The <strong>"intern analogy"</strong> still anchors how students reason about the AI's role and human accountability.</li>
+      <li>The student's intellectual work is the <strong>translation</strong>: turning general AI/strategy knowledge into practical guidance a regional manufacturer can act on.</li>
+    </ul>
+
+    <h3>3.2 Two-module division of labour</h3>
+    <p>The handbook is the shared capstone that <strong>unifies the two modules</strong> and justifies the split.</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th></th><th><strong>DIAIA</strong> (business / economy / society)</th><th><strong>Technical sister module</strong></th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Owns</strong></td><td>The <em>content</em></td><td>The <em>platform &amp; tooling</em></td></tr>
+        <tr><td><strong>Produces</strong></td><td>Theme-translation chapters: the SME-facing answer to a theme question, grounded in a CRISP-DM use case, with responsible-AI &amp; GDPR notes and "first steps for an owner"</td><td>The interactive handbook site; reusable AI demos/tools the chapters showcase; the publishing &amp; curation workflow</td></tr>
+        <tr><td><strong>Question answered</strong></td><td><em>Should an SME do this, and why?</em></td><td><em>How is it built, and how does it run?</em></td></tr>
+        <tr><td><strong>Student profile</strong></td><td>Business-facing</td><td>Builders (no-code → light-Python → full agentic, per the three sketches)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>Platform template.</strong> The sister module need not start from scratch: the <strong>AI Wiki</strong> at <code>/Projects/ai-wiki</code> is a working <strong>Quartz "digital-garden"</strong> — LLM-maintained, human-curated, already publishing 138 sources. It is the proven, low-risk template for the handbook platform and its curation method.</p>
+
+    <h3>3.3 A team's through-line</h3>
+    <ol>
+      <li><strong>Pick a theme</strong> — the SME question that interests the team (Part 4).</li>
+      <li><strong>Take one elective angle</strong> (A / B / C) within that theme.</li>
+      <li><strong>Study that theme's readings and viewings</strong> (listed under each angle in Part 4).</li>
+      <li><strong>Find additional quality material</strong> — go beyond the provided list: source your own academic papers, articles, and expert talks (e.g. YouTube), and judge each for credibility, relevance and recency.</li>
+      <li><strong>Write the contribution</strong> — SME-translation guidance + one illustrative CRISP-DM use case.</li>
+      <li><strong>Run the review loop</strong> — send the draft for <strong>peer review</strong> <em>and</em> to the <strong>Socratic AI agent</strong>, then revise (see §5.3).</li>
+    </ol>
+    <p>That contribution is the team's handbook chapter <em>and</em> its assessment artifact (see §5.4).</p>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Part 4 — The structure: seven themes as SME questions</h2>
+    <p><strong>Structural principle:</strong> <em>themes are the structure; use cases illustrate.</em> The seven SME-questions are stable Parts of the handbook; the use cases beneath them compound across cohorts. Each theme has <strong>two faces</strong>: the <strong>SME-facing question</strong> the handbook answers, and the <strong>three study angles</strong> (with readings) students choose between. They are the same seven themes that run through the whole programme.</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Theme</th><th>The SME-facing question</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Framing the AI agent</td><td>What can an AI "digital intern" realistically do for an SME — and what should it <em>not</em>?</td></tr>
+        <tr><td>2</td><td>Strategy</td><td>How can an SME make AI strategy development <em>and implementation</em> actually succeed?</td></tr>
+        <tr><td>3</td><td>Adoption &amp; maturity</td><td>How can AI adoption and maturity be developed within an SME?</td></tr>
+        <tr><td>4</td><td>Productivity &amp; where AI fits</td><td>Where does AI genuinely add value in an SME — and where does it not?</td></tr>
+        <tr><td>5</td><td>Economics &amp; labour</td><td>What does AI mean for an SME's people, skills and jobs?</td></tr>
+        <tr><td>6</td><td>Responsible AI &amp; society</td><td>How can an SME use AI responsibly and stay compliant (GDPR, trust)?</td></tr>
+        <tr><td>7</td><td>Firm boundaries &amp; the future</td><td>Should an SME build, buy, or partner — and how does it future-proof?</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><em>In each angle below: <strong>Read</strong> = articles/papers/reports; <strong>Watch</strong> = videos/podcasts. All sources are from the <a href="https://businessdatasolutions.github.io/ai-wiki">AI Wiki</a>; the full index is in the appendix. Two sources have no public URL and are shown unlinked.</em></p>
+
+    <div class="theme">
+      <h3>Theme 1 — What can an AI "digital intern" realistically do for an SME — and what should it <em>not</em>?</h3>
+      <p class="theme-help"><em>Helps an owner separate what AI is from the hype, and see where a careful, supervised AI "intern" fits a small firm.</em></p>
+      <ul class="angles">
+        <li><strong>A — The intern analogy in practice.</strong> What an AI agent <em>is and isn't</em> for a 30-person firm; what it should never decide alone.
+          <span class="src"><em>Read:</em> <a href="https://www.anthropic.com/research/building-effective-agents">Anthropic, <em>Building Effective Agents</em></a>; <a href="https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees">Kropp et al., <em>Don't Treat AI Agents Like Employees</em> (HBR×BCG)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=IIpfT7oZYz0">Ognibeni, <em>Cool Demos vs Real Revenue</em></a>.</span></li>
+        <li><strong>B — Telling hype from value.</strong> Which demos won't pay off, and which unglamorous uses will.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2025/11/the-gen-ai-playbook-for-organizations">Anand &amp; Wu, <em>The Gen AI Playbook</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=jikOaczZxTY">Mittal, <em>Private-Chef Startup All-In on Agents</em> (YC)</a>; <a href="https://www.youtube.com/watch?v=IGAVa4uyo2w">Jha, <em>Emergent × Claude</em></a>.</span></li>
+        <li><strong>C — Who decides, who's accountable.</strong> Roles and human accountability in a small team with no AI department.
+          <span class="src"><em>Read:</em> <a href="https://www.oreilly.com/radar/signals-for-2026/">Baron, <em>Signals for 2026</em> (O'Reilly)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=kMYeTRqzAfc">Masad, <em>Replit — The Only Two Jobs Left</em> (YC)</a>; <a href="https://www.youtube.com/watch?v=EN7frwQIbKc">Hu, <em>Build a Company with AI from the Ground Up</em> (YC)</a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> an email/quote-triage "intern" at a fabrication SME.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 2 — How can an SME make AI strategy development <em>and implementation</em> actually succeed?</h3>
+      <p class="theme-help"><em>Helps an owner connect AI to where the firm actually creates and captures value — and follow through to implementation, not just a plan.</em></p>
+      <ul class="angles">
+        <li><strong>A — Where's the value?</strong> The value stick for a small firm: will this raise what customers pay, or lower what it costs to serve them?
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2025/11/the-gen-ai-playbook-for-organizations">Anand &amp; Wu, <em>The Gen AI Playbook</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=iuYlGRnC7J8">Martin, <em>A Plan Is Not a Strategy</em> (HBR)</a>; <a href="https://www.youtube.com/watch?v=o7Ik1OB4TaE">Oberholzer-Gee, <em>What Is Strategy? — the value stick</em> (HBR)</a>.</span></li>
+        <li><strong>B — Learn by analogy &amp; systems.</strong> What comparable firms did; seeing the business as a system, not a list of tools.
+          <span class="src"><em>Read:</em> <a href="https://doi.org/10.1287/stsc.2024.0174">Carroll &amp; Sørensen, <em>Strategy Theory Using Analogy</em></a>; <a href="https://hbr.org/2025/09/why-you-need-systems-thinking-now">Bansal &amp; Birkinshaw, <em>Why You Need Systems Thinking Now</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=wSuQQYv-E64">Sterman, <em>Systems Thinking for Leaders</em> (MIT Sloan)</a>.</span></li>
+        <li><strong>C — Playing the long game.</strong> Owner/family-firm horizons: an "infinite game" posture rather than a one-off project.
+          <span class="src"><em>Read:</em> Ross &amp; Schneider, <em>Resilience Won't Save Your Organization. Adaptability Will</em> (HBR) — <em>(no public URL)</em>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=tye525dkfi8">Sinek, <em>The Infinite Game</em> (NYT)</a>; <a href="https://www.youtube.com/watch?v=yYkBpzq5Sqw">Erginbilgiç, <em>Rolls-Royce Turnaround Playbook</em> (Bloomberg)</a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> a machining SME choosing one strategic AI bet over five scattered pilots.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 3 — How can AI adoption and maturity be developed within an SME?</h3>
+      <p class="theme-help"><em>Gives an owner a realistic path from first experiment to embedded capability — sized for a small firm.</em></p>
+      <ul class="angles">
+        <li><strong>A — A maturity path for a small firm.</strong> Stages from experiment → pilot → way-of-working, without enterprise overhead.
+          <span class="src"><em>Read:</em> <a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-to-boost-your-organizations-ai-maturity-level">MIT Sloan/CISR, <em>Boost Your AI Maturity Level</em></a>; <a href="https://www.technologyreview.com/insights/">Cisco × MIT TR Insights, <em>Building the AI-Enabled Enterprise</em></a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=Nl-PpoKtxc4">Jassy, <em>Amazon on Agility &amp; AI Strategy</em> (HBR)</a>.</span></li>
+        <li><strong>B — AI-native vs retrofitting.</strong> Starting fresh vs adding AI to legacy processes; what each costs.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2026/04/the-end-of-one-size-fits-all-enterprise-software">Nishar &amp; Nohria, <em>The End of One-Size-Fits-All Enterprise Software</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=X1NXnLRNIfM">Glasgow, <em>Campfire — ERP for the AI Revolution</em> (YC)</a>; <a href="https://www.youtube.com/watch?v=21L-iujzy9U">Hill, <em>Vori — A $1.5T Industry on Paper</em> (YC)</a>.</span></li>
+        <li><strong>C — Building the capability to keep adapting.</strong> Dynamic capability: sensing, trying, reconfiguring as a habit.
+          <span class="src"><em>Read:</em> <a href="https://doi.org/10.1016/j.lrp.2018.12.001">Warner &amp; Wäger, <em>Building Dynamic Capabilities for Digital Transformation</em></a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=HBMmK0NsUK0">Chamath, <em>How to Win in the AI Era</em> (Stanford AI Club)</a>; <a href="https://www.youtube.com/watch?v=v3keZgwElWk">Carrier, <em>Industrial AI That Works</em> (MIT Sloan)</a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> a family firm's 12-month adoption roadmap.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 4 — Where does AI genuinely add value in an SME — and where does it not?</h3>
+      <p class="theme-help"><em>Helps an owner pick the right tasks for AI and avoid busy-work that never reaches the bottom line.</em></p>
+      <ul class="angles">
+        <li><strong>A — Avoiding the productivity trap.</strong> Why task-level time savings don't automatically become firm-level value.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2026/04/how-to-move-from-ai-experimentation-to-ai-transformation">Dutt &amp; Chatterji, <em>From AI Experimentation to Transformation</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=hSpem_oGAf0">Sternfels, <em>How McKinsey Plans to Survive AI</em> (HBR)</a>; <a href="https://www.youtube.com/watch?v=KJyQNwVj-_4">Thompson, <em>The Workers Letting A.I. Do Their Jobs</em> (NYT The Daily)</a>.</span></li>
+        <li><strong>B — The jagged frontier.</strong> Which tasks to trust AI with and which to keep human; testing before relying.
+          <span class="src"><em>Read:</em> <a href="https://doi.org/10.1287/orsc.2025.21838">Dell'Acqua et al., <em>Navigating the Jagged Technological Frontier</em></a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=BQrJ4lHAjhc">Singhal, <em>Product Management in the AI Era</em> (Stanford CS153)</a>; <a href="https://hbr.org/podcast/2026/05/redefining-what-efficiency-means-in-the-age-of-ai">Storoni, <em>Redefining Efficiency in the Age of AI</em> (HBR IdeaCast)</a>.</span></li>
+        <li><strong>C — Do we have capacity to absorb it?</strong> Adoption capacity — people, time, data — as the real binding constraint.
+          <span class="src"><em>Read:</em> <a href="https://www.mckinsey.com/mgi/our-research/agents-robots-and-us-skill-partnerships-in-the-age-of-ai">Yee et al. (MGI), <em>Agents, Robots and Us: Skill Partnerships</em></a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=U9s9Kxb7p5I">HubSpot × Claude, <em>Customer Success</em></a>; <a href="https://www.youtube.com/watch?v=sZHGbRYQti4">Lyft × Claude, <em>Customer Support</em></a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> mapping a workshop's tasks against an "AI-fit" grid.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 5 — What does AI mean for an SME's people, skills and jobs?</h3>
+      <p class="theme-help"><em>Helps an owner think honestly about roles, craft and morale — and use AI to grow people, not hollow them out.</em></p>
+      <ul class="angles">
+        <li><strong>A — Changing roles.</strong> What shifts on the shop floor and in the office; what new tasks appear.
+          <span class="src"><em>Read:</em> <a href="https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/">Brynjolfsson et al., <em>Canaries in the Coal Mine</em> (Stanford)</a>; <a href="https://doi.org/10.1093/qje/qjae044">Brynjolfsson, Li &amp; Raymond, <em>Generative AI at Work</em> (QJE)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=KJyQNwVj-_4">Thompson, <em>The Workers Letting A.I. Do Their Jobs</em> (NYT)</a>.</span></li>
+        <li><strong>B — Deskilling vs durable skills.</strong> Protecting hard-won craft and judgment while automating the routine.
+          <span class="src"><em>Read:</em> <a href="https://doi.org/10.1287/mnsc.2022.03849">Krakowski et al., <em>Human-Centered AI: A Field Experiment</em> (Mgmt Science)</a>; Globerson et al., <em>Towards Scalable Measurement of Durable Skills</em> (Google Research) — <em>(no public URL)</em>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=mCO-D3pkviM">Schoening, <em>Cultivating Agency in the AI Era</em> (Lenny's Podcast)</a>.</span></li>
+        <li><strong>C — Augment and reinvest.</strong> Putting time saved back into better work, training, or customers — not just headcount.
+          <span class="src"><em>Read:</em> <a href="https://www.anthropic.com/research/economic-index-march-2026-report">Anthropic, <em>Economic Index: Learning Curves</em></a>; <a href="https://www.anthropic.com/research/anthropic-economic-index-new-building-blocks-for-understanding-ai-use">Anthropic, <em>Economic Index: New Building Blocks</em></a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=OJLMClRrUv4">Forsgren &amp; Macvean, <em>Build Core Skills for the AI Era</em> (Google I/O)</a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> reinvesting freed-up admin time into operator upskilling.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 6 — How can an SME use AI responsibly and stay compliant (GDPR, trust)?</h3>
+      <p class="theme-help"><em>Gives an owner a plain-language way to adopt AI without legal, ethical or reputational nasty surprises.</em></p>
+      <ul class="angles">
+        <li><strong>A — Responsible-by-design &amp; procurement.</strong> What to ask a vendor; guardrails to set before switching anything on.
+          <span class="src"><em>Read:</em> <a href="https://arxiv.org/abs/2503.18666">Wang et al., <em>AgentSpec: Runtime Enforcement for Safe LLM Agents</em></a>; <a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-to-boost-your-organizations-ai-maturity-level">MIT Sloan/CISR, <em>AI Maturity — the stewardship pillar</em></a>. <em>Watch:</em> <a href="https://hbr.org/podcast/2026/05/redefining-what-efficiency-means-in-the-age-of-ai">Storoni, <em>Redefining Efficiency in the Age of AI</em> (HBR IdeaCast)</a>.</span></li>
+        <li><strong>B — Accountability &amp; human-in-the-loop.</strong> Who is responsible for an AI-assisted decision; where a human must stay in the loop.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees">Kropp et al., <em>Don't Treat AI Agents Like Employees</em> (HBR×BCG)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=mCO-D3pkviM">Schoening, <em>Cultivating Agency in the AI Era</em> (Lenny's Podcast)</a>; <a href="https://www.youtube.com/watch?v=OJLMClRrUv4">Forsgren &amp; Macvean, <em>Build Core Skills for the AI Era</em> (Google I/O)</a>.</span></li>
+        <li><strong>C — Governing for change.</strong> Staying adaptable and reviewing as tools and rules evolve.
+          <span class="src"><em>Read:</em> Ross &amp; Schneider, <em>Adaptability Will Save Your Organization</em> (HBR) — <em>(no public URL)</em>; <a href="https://hbr.org/2025/09/why-you-need-systems-thinking-now">Bansal &amp; Birkinshaw, <em>Why You Need Systems Thinking Now</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=v3keZgwElWk">Carrier, <em>Industrial AI That Works</em> (MIT Sloan)</a>.</span></li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> a one-page responsible-AI &amp; GDPR checklist for a first deployment.</p>
+    </div>
+
+    <div class="theme">
+      <h3>Theme 7 — Should an SME build, buy, or partner — and how does it future-proof?</h3>
+      <p class="theme-help"><em>Helps an owner decide where to spend scarce effort, what to buy off the shelf, and how to stay ready for what's next.</em></p>
+      <ul class="angles">
+        <li><strong>A — Build / buy / partner.</strong> The firm-boundary decision for a small firm: what to make distinctive vs procure.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2026/04/the-end-of-one-size-fits-all-enterprise-software">Nishar &amp; Nohria, <em>The End of One-Size-Fits-All Enterprise Software</em> (HBR)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=lfzm2SlhbM8">Vitucci, <em>The Next Industry AI Will Disrupt</em> (YC)</a>; <a href="https://www.youtube.com/watch?v=UdDK-BCJPLw">DFI Retail / Price, <em>How Asia's Biggest Retailer Reinvents Selling</em> (CNBC)</a>.</span></li>
+        <li><strong>B — Spotting the next opportunity.</strong> Regional foresight — where the next arenas are for our sector.
+          <span class="src"><em>Read:</em> <a href="https://hbr.org/2024/01/bringing-true-strategic-foresight-back-to-business">Webb, <em>Bringing True Strategic Foresight Back to Business</em> (HBR)</a>; <a href="https://www.mckinsey.com/mgi/our-research/the-race-takes-off-in-the-next-big-arenas-of-competition">MGI, <em>The Race Takes Off — Next Big Arenas</em> (report)</a>. <em>Watch:</em> <a href="https://www.youtube.com/watch?v=qp4H2cBB6vE">MGI, <em>The Race Takes Off</em> (virtual event)</a>.</span></li>
+        <li><strong>Capstone — The integrative SME business case.</strong> Pulling the chosen angle together into one defensible recommendation for a real (or persona) SME.</li>
+      </ul>
+      <p class="illus"><em>Illustrated by:</em> a build-vs-buy decision for a quality-inspection vision tool.</p>
+    </div>
+
+    <h3>Chapter anatomy (within any theme)</h3>
+    <p>A team's contribution = <strong>SME-translation guidance for one theme/angle, grounded in one illustrative use case.</strong></p>
+    <ol>
+      <li><strong>The question, for this kind of SME</strong> — the theme's question narrowed to a sector/size (e.g. a 30-person CNC shop).</li>
+      <li><strong>The translation</strong> — the general theory turned into plain guidance an owner can act on.</li>
+      <li><strong>Illustrative use case (CRISP-DM)</strong> — one concrete example through the six phases, honest about data reality.</li>
+      <li><strong>Recommended tooling</strong> — concrete, accessible options (no-code first), with what each costs in effort.</li>
+      <li><strong>Responsible AI &amp; GDPR</strong> — risks, guardrails, human-in-the-loop, data/confidentiality.</li>
+      <li><strong>First five steps for an owner</strong> — the "Monday morning" starting actions.</li>
+    </ol>
+
+    <h3>Connective sections (wrapping the seven themes)</h3>
+    <p>A usable shell around the thematic Parts: <strong>Start here</strong> (orientation for an SME owner new to AI; how to use the book) · <strong>Tooling index</strong> (the accessible/no-code tools referenced across Parts, in one place) · <strong>Regional ecosystem &amp; support</strong> (partners, hubs, funding — see §5.2) · <strong>About &amp; disclaimer</strong> (<em>educational, not consultancy</em>). <em>(Responsible adoption is <strong>Theme 6</strong>, a full theme — not a back-of-book appendix.)</em></p>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Part 5 — How it operates over time</h2>
+
+    <h3>5.1 The living-artifact model (continuity &amp; governance)</h3>
+    <p>A handbook is a multi-year asset; no single 7-week cohort can finish it — and it shouldn't have to. The <strong>seven questions are stable</strong>; the material under them <strong>compounds</strong>.</p>
+    <ul>
+      <li><strong>Compounding across cohorts.</strong> Each cohort adds new chapters and refreshes existing ones — maintenance, not authorship from zero. This is precisely what the digital-garden / LLM-wiki pattern is built for (see <code>/Projects/ai-wiki</code>).</li>
+      <li><strong>Editorial / curation layer.</strong> Nothing reaches a real SME unreviewed. A teacher (optionally with an expert partner) curates and approves chapters before publication — the "human-curated" half of the LLM-wiki pattern.</li>
+      <li><strong>Quality bar &amp; disclaimers.</strong> A short chapter rubric (clarity, accuracy, responsible-AI coverage, usefulness to an owner) plus the standing "educational, not consultancy" disclaimer.</li>
+      <li><strong>IP &amp; confidentiality.</strong> Real SME cases are anonymised or published only with consent; sensitive data never enters the public handbook.</li>
+    </ul>
+
+    <h3>5.2 Partners &amp; regional ecosystem</h3>
+    <p>The region already has the network to make this real (see <code>background-docs/contacten-tessa-vno.md</code>):</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Partner</th><th>Possible role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Menno Herkes</strong> (HAN docent-onderzoeker; AI/digital twin/smart industry)</td><td>Academic anchor; SME-trajectory expertise; expert review</td></tr>
+        <tr><td><strong>CIVON</strong> (innovatiecentrum maakindustrie, Ulft)</td><td>SME access; practical training; case sources</td></tr>
+        <tr><td><strong>Smart Industry Hub Oost-Nederland</strong></td><td>Practice examples, tools, dissemination</td></tr>
+        <tr><td><strong>HAN iXperium Smart Industry</strong></td><td>Demonstrations &amp; student build support</td></tr>
+        <tr><td><strong>De Innovatie Coöperatie</strong> (agrofood &amp; maakindustrie)</td><td>Community events; SME introductions</td></tr>
+        <tr><td><strong>VNO-NCW</strong> (via Tessa)</td><td>Employer-network reach; regional legitimacy</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>Fallback for SME access.</strong> When a team can't be paired with a real firm in seven weeks, they work from <strong>SME personas/archetypes</strong> (e.g. "30-person CNC machining shop", "family metal-fabrication firm") so no team is blocked — with real cases swapped in when available.</p>
+
+    <h3>5.3 Review &amp; feedback: peer review and the Socratic AI agent</h3>
+    <p>Before a chapter is curated for publication, every draft passes through a <strong>two-part review loop</strong> designed both to improve the work <em>and</em> to develop the students' own judgment. Draft → <strong>peer review + Socratic AI agent</strong> → revise → editorial curation (§5.1) → publish.</p>
+    <p><strong>Peer review.</strong> Each team sends its draft to one or more other teams, who respond against the chapter rubric (clarity, accuracy, responsible-AI coverage, usefulness to an SME owner). Review is <strong>reciprocal</strong> — every team both gives and receives — which builds critical reading and the ability to judge what is genuinely useful to a small-firm owner.</p>
+    <p><strong>The Socratic AI agent.</strong> Each team also submits its chapter to a dedicated <strong>AI reviewer agent</strong> that produces <em>two outputs for two audiences</em>:</p>
+    <ul>
+      <li><strong>To the students (visible):</strong> the agent <strong>never says what is good or bad</strong> and offers no verdict or fixes. Instead it returns a <strong>comprehensive set of Socratic questions</strong> — prompts that make the team re-examine their assumptions, evidence, clarity, responsible-AI gaps, and usefulness to an owner. Improvement comes from the students' <em>own</em> reflection, not from being handed the answer.</li>
+      <li><strong>To instructors (hidden):</strong> behind the scenes the agent also produces a <strong>score against the rubric, visible only to instructors</strong> — a calibration signal and an early flag for chapters needing attention. Students never see this score.</li>
+    </ul>
+    <p><em>Why Socratic, not corrective:</em> telling a team "this is wrong" produces compliance; asking <em>"what evidence supports this, and what would an SME owner still need to know?"</em> produces reflection and durable skill. The agent is a <strong>thinking prompt, not an oracle</strong>.</p>
+    <p><strong>Build ownership.</strong> The Socratic agent is itself a natural build for the <strong>technical sister module</strong> — an LLM agent with a hidden scoring rubric and a Socratic-question generator. It is a concrete, reusable tool the sister module contributes, and a neat piece of dogfooding: students use an AI agent to improve a handbook <em>about</em> AI agents.</p>
+
+    <h3>5.4 Assessment alignment</h3>
+    <p>The handbook fits DIAIA's existing assessment shape (single integrated task + <strong>criterion-based interview</strong>, 0–10 scale):</p>
+    <ul>
+      <li><strong>Deliverable:</strong> a published (curated) handbook chapter.</li>
+      <li><strong>Plus:</strong> a short individual reflection and the CBI, where students defend their SME-translation, business case, CRISP-DM choices, and responsible-AI reasoning — and reflect on <strong>how they responded to the Socratic questions and peer feedback</strong>.</li>
+      <li><strong>The Socratic agent's hidden score is an instructor calibration signal, not the grade itself</strong> — it informs, but does not replace, the criterion-based interview.</li>
+      <li><strong>Criteria</strong> reuse the current CRISP-DM-aligned rubric; "a simple, well-designed, well-governed use case beats a complex one nobody understands" remains the grading ethos.</li>
+      <li><strong>The optional "working prototype"</strong> (currently rewarded only at grades 7–10 in DIAIA) <strong>migrates to the sister module</strong> as its tooling contribution — removing the audience mismatch that motivated the whole redesign.</li>
+    </ul>
+
+    <h3>5.5 Risks &amp; mitigations</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Risk</th><th>Mitigation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quality / liability</strong> — real SMEs read this</td><td>Editorial curation + expert review before publish; "educational, not consultancy" disclaimer</td></tr>
+        <tr><td><strong>Shallow or gamed feedback</strong></td><td>Reciprocal peer review against the rubric; the Socratic agent's hidden instructor-only score flags drafts whose peer feedback looks too easy</td></tr>
+        <tr><td><strong>Scope sprawl</strong></td><td>One chapter per team; fixed chapter template</td></tr>
+        <tr><td><strong>SME access</strong> varies</td><td>Persona/archetype fallback; partner-brokered introductions</td></tr>
+        <tr><td><strong>Build-vs-author confusion</strong></td><td>Clean split: DIAIA authors, sister module builds; business students never forced into web dev</td></tr>
+        <tr><td><strong>GDPR / confidentiality</strong></td><td>Anonymise or consent-gate real cases; no sensitive data in the public book</td></tr>
+        <tr><td><strong>Continuity</strong> across cohorts</td><td>Living-artifact model + persistent platform + curation ownership</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>5.6 Roadmap</h3>
+    <ol>
+      <li><strong>Pilot (one DIAIA cohort).</strong> Seed 4–6 chapters from persona-based use cases; stand up a minimal platform (Quartz template) in the sister module.</li>
+      <li><strong>Partner onboarding.</strong> Bring CIVON / Smart Industry Hub / iXperium in for real SME cases and expert review.</li>
+      <li><strong>MVP handbook live.</strong> Curated chapters published; disclaimer and rubric in place.</li>
+      <li><strong>Public launch &amp; dissemination.</strong> Via VNO-NCW and the regional hubs; invite SME feedback.</li>
+      <li><strong>Compounding.</strong> Each subsequent cohort extends and refreshes; assign curation ownership.</li>
+    </ol>
+    <p><em>Suggested owners: course team (DIAIA + sister), with Menno Herkes as academic/industry anchor.</em></p>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Appendix A — Wiki source index</h2>
+    <p>All readings/viewings above are drawn from the AI Wiki corpus (<a href="https://businessdatasolutions.github.io/ai-wiki">businessdatasolutions.github.io/ai-wiki</a>). Each source is used in at most two themes; the <em>combinations</em> per angle are unique, and every angle mixes at least one reading and one viewing.</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Source</th><th>Kind</th><th>URL</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Anthropic — <em>Building Effective Agents</em></td><td>article</td><td><a href="https://www.anthropic.com/research/building-effective-agents">https://www.anthropic.com/research/building-effective-agents</a></td></tr>
+        <tr><td>Kropp et al. — <em>Don't Treat AI Agents Like Employees</em></td><td>article</td><td><a href="https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees">https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees</a></td></tr>
+        <tr><td>Ognibeni — <em>Cool Demos vs Real Revenue</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=IIpfT7oZYz0">https://www.youtube.com/watch?v=IIpfT7oZYz0</a></td></tr>
+        <tr><td>Anand &amp; Wu — <em>The Gen AI Playbook for Organizations</em></td><td>article</td><td><a href="https://hbr.org/2025/11/the-gen-ai-playbook-for-organizations">https://hbr.org/2025/11/the-gen-ai-playbook-for-organizations</a></td></tr>
+        <tr><td>Mittal — <em>Private-Chef Startup All-In on AI Agents</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=jikOaczZxTY">https://www.youtube.com/watch?v=jikOaczZxTY</a></td></tr>
+        <tr><td>Jha — <em>Emergent × Claude</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=IGAVa4uyo2w">https://www.youtube.com/watch?v=IGAVa4uyo2w</a></td></tr>
+        <tr><td>Baron — <em>Signals for 2026</em></td><td>article</td><td><a href="https://www.oreilly.com/radar/signals-for-2026/">https://www.oreilly.com/radar/signals-for-2026/</a></td></tr>
+        <tr><td>Masad — <em>Replit: The Only Two Jobs Left</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=kMYeTRqzAfc">https://www.youtube.com/watch?v=kMYeTRqzAfc</a></td></tr>
+        <tr><td>Hu — <em>Build a Company with AI from the Ground Up</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=EN7frwQIbKc">https://www.youtube.com/watch?v=EN7frwQIbKc</a></td></tr>
+        <tr><td>Martin — <em>A Plan Is Not a Strategy</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=iuYlGRnC7J8">https://www.youtube.com/watch?v=iuYlGRnC7J8</a></td></tr>
+        <tr><td>Oberholzer-Gee — <em>What Is Strategy? (value stick)</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=o7Ik1OB4TaE">https://www.youtube.com/watch?v=o7Ik1OB4TaE</a></td></tr>
+        <tr><td>Carroll &amp; Sørensen — <em>Strategy Theory Using Analogy</em></td><td>paper</td><td><a href="https://doi.org/10.1287/stsc.2024.0174">https://doi.org/10.1287/stsc.2024.0174</a></td></tr>
+        <tr><td>Bansal &amp; Birkinshaw — <em>Why You Need Systems Thinking Now</em></td><td>article</td><td><a href="https://hbr.org/2025/09/why-you-need-systems-thinking-now">https://hbr.org/2025/09/why-you-need-systems-thinking-now</a></td></tr>
+        <tr><td>Sterman — <em>Systems Thinking for Leaders</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=wSuQQYv-E64">https://www.youtube.com/watch?v=wSuQQYv-E64</a></td></tr>
+        <tr><td>Sinek — <em>The Infinite Game</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=tye525dkfi8">https://www.youtube.com/watch?v=tye525dkfi8</a></td></tr>
+        <tr><td>Ross &amp; Schneider — <em>Adaptability Will Save Your Organization</em></td><td>article</td><td><em>(no public URL)</em></td></tr>
+        <tr><td>Erginbilgiç — <em>Rolls-Royce Turnaround Playbook</em></td><td>podcast</td><td><a href="https://www.youtube.com/watch?v=yYkBpzq5Sqw">https://www.youtube.com/watch?v=yYkBpzq5Sqw</a></td></tr>
+        <tr><td>MIT Sloan/CISR — <em>Boost Your AI Maturity Level</em></td><td>article</td><td><a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-to-boost-your-organizations-ai-maturity-level">https://mitsloan.mit.edu/ideas-made-to-matter/how-to-boost-your-organizations-ai-maturity-level</a></td></tr>
+        <tr><td>Cisco × MIT TR Insights — <em>Building the AI-Enabled Enterprise</em></td><td>report</td><td><a href="https://www.technologyreview.com/insights/">https://www.technologyreview.com/insights/</a></td></tr>
+        <tr><td>Jassy — <em>Amazon on Agility &amp; AI Strategy</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=Nl-PpoKtxc4">https://www.youtube.com/watch?v=Nl-PpoKtxc4</a></td></tr>
+        <tr><td>Nishar &amp; Nohria — <em>The End of One-Size-Fits-All Enterprise Software</em></td><td>article</td><td><a href="https://hbr.org/2026/04/the-end-of-one-size-fits-all-enterprise-software">https://hbr.org/2026/04/the-end-of-one-size-fits-all-enterprise-software</a></td></tr>
+        <tr><td>Glasgow — <em>Campfire: ERP for the AI Revolution</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=X1NXnLRNIfM">https://www.youtube.com/watch?v=X1NXnLRNIfM</a></td></tr>
+        <tr><td>Hill — <em>Vori: A $1.5T Industry on Paper</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=21L-iujzy9U">https://www.youtube.com/watch?v=21L-iujzy9U</a></td></tr>
+        <tr><td>Warner &amp; Wäger — <em>Building Dynamic Capabilities for Digital Transformation</em></td><td>paper</td><td><a href="https://doi.org/10.1016/j.lrp.2018.12.001">https://doi.org/10.1016/j.lrp.2018.12.001</a></td></tr>
+        <tr><td>Chamath — <em>How to Win in the AI Era</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=HBMmK0NsUK0">https://www.youtube.com/watch?v=HBMmK0NsUK0</a></td></tr>
+        <tr><td>Carrier — <em>Industrial AI That Works</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=v3keZgwElWk">https://www.youtube.com/watch?v=v3keZgwElWk</a></td></tr>
+        <tr><td>Dutt &amp; Chatterji — <em>From AI Experimentation to Transformation</em></td><td>article</td><td><a href="https://hbr.org/2026/04/how-to-move-from-ai-experimentation-to-ai-transformation">https://hbr.org/2026/04/how-to-move-from-ai-experimentation-to-ai-transformation</a></td></tr>
+        <tr><td>Sternfels — <em>How McKinsey Plans to Survive AI</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=hSpem_oGAf0">https://www.youtube.com/watch?v=hSpem_oGAf0</a></td></tr>
+        <tr><td>Thompson — <em>The Workers Letting A.I. Do Their Jobs</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=KJyQNwVj-_4">https://www.youtube.com/watch?v=KJyQNwVj-_4</a></td></tr>
+        <tr><td>Dell'Acqua et al. — <em>Navigating the Jagged Technological Frontier</em></td><td>paper</td><td><a href="https://doi.org/10.1287/orsc.2025.21838">https://doi.org/10.1287/orsc.2025.21838</a></td></tr>
+        <tr><td>Singhal — <em>Product Management in the AI Era</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=BQrJ4lHAjhc">https://www.youtube.com/watch?v=BQrJ4lHAjhc</a></td></tr>
+        <tr><td>Storoni — <em>Redefining Efficiency in the Age of AI</em></td><td>podcast</td><td><a href="https://hbr.org/podcast/2026/05/redefining-what-efficiency-means-in-the-age-of-ai">https://hbr.org/podcast/2026/05/redefining-what-efficiency-means-in-the-age-of-ai</a></td></tr>
+        <tr><td>Yee et al. (MGI) — <em>Agents, Robots and Us: Skill Partnerships</em></td><td>report</td><td><a href="https://www.mckinsey.com/mgi/our-research/agents-robots-and-us-skill-partnerships-in-the-age-of-ai">https://www.mckinsey.com/mgi/our-research/agents-robots-and-us-skill-partnerships-in-the-age-of-ai</a></td></tr>
+        <tr><td>HubSpot × Claude — <em>Customer Success</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=U9s9Kxb7p5I">https://www.youtube.com/watch?v=U9s9Kxb7p5I</a></td></tr>
+        <tr><td>Lyft × Claude — <em>Customer Support</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=sZHGbRYQti4">https://www.youtube.com/watch?v=sZHGbRYQti4</a></td></tr>
+        <tr><td>Brynjolfsson et al. — <em>Canaries in the Coal Mine</em></td><td>paper</td><td><a href="https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/">https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/</a></td></tr>
+        <tr><td>Brynjolfsson, Li &amp; Raymond — <em>Generative AI at Work</em></td><td>paper</td><td><a href="https://doi.org/10.1093/qje/qjae044">https://doi.org/10.1093/qje/qjae044</a></td></tr>
+        <tr><td>Krakowski et al. — <em>Human-Centered AI: A Field Experiment</em></td><td>paper</td><td><a href="https://doi.org/10.1287/mnsc.2022.03849">https://doi.org/10.1287/mnsc.2022.03849</a></td></tr>
+        <tr><td>Globerson et al. — <em>Towards Scalable Measurement of Durable Skills</em></td><td>paper</td><td><em>(no public URL)</em></td></tr>
+        <tr><td>Schoening — <em>Cultivating Agency in the AI Era</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=mCO-D3pkviM">https://www.youtube.com/watch?v=mCO-D3pkviM</a></td></tr>
+        <tr><td>Anthropic — <em>Economic Index: Learning Curves</em></td><td>report</td><td><a href="https://www.anthropic.com/research/economic-index-march-2026-report">https://www.anthropic.com/research/economic-index-march-2026-report</a></td></tr>
+        <tr><td>Anthropic — <em>Economic Index: New Building Blocks</em></td><td>article</td><td><a href="https://www.anthropic.com/research/anthropic-economic-index-new-building-blocks-for-understanding-ai-use">https://www.anthropic.com/research/anthropic-economic-index-new-building-blocks-for-understanding-ai-use</a></td></tr>
+        <tr><td>Forsgren &amp; Macvean — <em>Build Core Skills for the AI Era</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=OJLMClRrUv4">https://www.youtube.com/watch?v=OJLMClRrUv4</a></td></tr>
+        <tr><td>Wang et al. — <em>AgentSpec: Runtime Enforcement for Safe LLM Agents</em></td><td>paper</td><td><a href="https://arxiv.org/abs/2503.18666">https://arxiv.org/abs/2503.18666</a></td></tr>
+        <tr><td>Webb — <em>Bringing True Strategic Foresight Back to Business</em></td><td>article</td><td><a href="https://hbr.org/2024/01/bringing-true-strategic-foresight-back-to-business">https://hbr.org/2024/01/bringing-true-strategic-foresight-back-to-business</a></td></tr>
+        <tr><td>MGI — <em>The Race Takes Off: Next Big Arenas</em> (report)</td><td>report</td><td><a href="https://www.mckinsey.com/mgi/our-research/the-race-takes-off-in-the-next-big-arenas-of-competition">https://www.mckinsey.com/mgi/our-research/the-race-takes-off-in-the-next-big-arenas-of-competition</a></td></tr>
+        <tr><td>MGI — <em>The Race Takes Off</em> (virtual event)</td><td>video</td><td><a href="https://www.youtube.com/watch?v=qp4H2cBB6vE">https://www.youtube.com/watch?v=qp4H2cBB6vE</a></td></tr>
+        <tr><td>Vitucci — <em>The Next Industry AI Will Disrupt</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=lfzm2SlhbM8">https://www.youtube.com/watch?v=lfzm2SlhbM8</a></td></tr>
+        <tr><td>DFI Retail / Price — <em>How Asia's Biggest Retailer Reinvents Selling</em></td><td>video</td><td><a href="https://www.youtube.com/watch?v=UdDK-BCJPLw">https://www.youtube.com/watch?v=UdDK-BCJPLw</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="bds-part">Appendix B — Source documents &amp; method</h2>
+    <ul>
+      <li><strong>EU competitiveness agenda</strong> (<code>background-docs/</code>): Draghi, <em>Address at the presentation of the report</em>; <em>Speech, One Year After</em>; <em>The Future of European Competitiveness — A Competitiveness Strategy for Europe</em>; European Commission, <em>Competitiveness Compass</em> (Communication &amp; Factsheet); von der Leyen, <em>One Year After the Draghi Report</em> keynote.</li>
+      <li><strong>Method &amp; platform template:</strong> the AI Wiki (<code>/Projects/ai-wiki</code>) — a Quartz digital garden, LLM-maintained and human-curated.</li>
+      <li><strong>Module context:</strong> <a href="module-overview.md">module-overview.md</a>, <a href="module-redesign-sketches.md">module-redesign-sketches.md</a>.</li>
+    </ul>
+    <p><em>Figures and quotations are drawn from the background documents above. Where a precise figure was not directly verifiable in the source text, it has been omitted rather than estimated.</em></p>
+  </section>
+
+</main>
+
+<footer class="bds-footer">
+  <div class="bds-footer-inner">
+    <a href="#top" class="bds-wordmark">
+      <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Business Data Solutions">
+        <g fill="#1a1a1a">
+          <polygon points="9,29 11,10 17,10 19,29"/>
+          <polygon points="8,8.5 20,8.5 19,10 9,10"/>
+          <rect x="11" y="5" width="6" height="3.5"/>
+          <path d="M10.5 5 Q10.5 1.5 14 1.5 Q17.5 1.5 17.5 5 Z"/>
+          <rect x="13.5" y="0" width="1" height="1.8"/>
+        </g>
+        <rect x="13" y="6" width="2" height="2" fill="#d4db3e"/>
+        <g stroke="#d4db3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M21 4 L26 7 L21 10"/>
+          <path d="M26 4 L31 7 L26 10"/>
+        </g>
+      </svg>
+      <span>Business Data Solutions</span>
+    </a>
+    <p>AI for SMEs — DIAIA Programme &amp; Living Handbook</p>
+  </div>
+</footer>
+
+</body>
+</html>

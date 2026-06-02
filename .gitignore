@@ -1,0 +1,5 @@
+# Personal contact data — never publish (GDPR)
+background-docs/
+# Editor / OS cruft
+.vscode/
+.DS_Store
