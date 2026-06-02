@@ -7,7 +7,7 @@ This document brings together three things in one story:
 - **What** students build (the handbook) and **how** it sits in the curriculum (the two modules, the weekly themes, assessment),
 - **The structure** that ties studying and building together: seven weekly themes, each posed as an SME-facing question, each backed by curated readings and viewings.
 
-It develops the DIAIA redesign in [module-overview.md](module-overview.md) and [module-redesign-sketches.md](module-redesign-sketches.md), and grounds the mission in the EU competitiveness agenda (see `background-docs/`).
+It develops the DIAIA (Decision Intelligence and AI Agents) redesign in [module-overview.md](module-overview.md) and [module-redesign-sketches.md](module-redesign-sketches.md), and grounds the mission in the EU competitiveness agenda (see `background-docs/`).
 
 **How to read it.** Part 1 is the *why*. Part 2 is *what we build*. Part 3 is *how it runs in the curriculum*. Part 4 is the *heart* — the seven themes, each as an SME question with its study angles and readings. Part 5 is *how it operates over time* (governance, partners, assessment, risks, roadmap). The appendix is the full source index.
 
