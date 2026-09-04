@@ -10,21 +10,24 @@ built by HAN students, in service of European competitiveness.
 | | |
 |---|---|
 | [`site/`](site/) | **Published.** Everything here goes live on GitHub Pages. |
-| [`work/`](work/) | **Not published.** Drafts and exploration, staged before they reach the site. |
+| [`work/`](work/) | **Not published.** Drafts on their way to the site, and the decisions behind the module. |
 | [`project-documentation/`](project-documentation/) | **Not published.** Internal project documents, tracked in git. |
 
 ### `site/` — the public handbook
 - [`site/index.html`](site/index.html) — the handbook itself, and the single source of truth for its content
-- [`site/module-overview.md`](site/module-overview.md), [`site/module-redesign-sketches.md`](site/module-redesign-sketches.md) — module design context, linked from the handbook
 
 ### `project-documentation/` — internal
-- [`project-documentation/integrated-lrd.html`](project-documentation/integrated-lrd.html) — the integrated learning-requirements document for DIAIA and the AEAIS sister module
+- [`project-documentation/integrated-lrd.html`](project-documentation/integrated-lrd.html) — the integrated learning-requirements document for DIAIA and the AEAIS sister module; its Appendix A records the current DIAIA module (formerly `module-overview.md`)
+- `module-redesign-sketches.md` — three paired sketches for splitting DIAIA into a business/society module and a technical sister module
 - `Voorstel Handbook DIAIA .pdf` — the original proposal
 
 These are in the repo but not on the site: open the LRD locally from a clone. It links
 out to the published handbook by URL, so those links work from anywhere.
 
 ### `work/` — where we think
+- [`work/drafts/`](work/drafts/) — ideas being worked out, not yet fit for students. Transient: each draft is promoted to `site/` or abandoned.
+- [`work/decisions/`](work/decisions/) — the design decisions behind the module, as numbered ADRs. Permanent, and never promoted. An accepted record stops changing: you supersede it rather than edit it.
+
 See [`work/README.md`](work/README.md) for the working agreement.
 
 ## Publishing
@@ -33,8 +36,32 @@ Publishing is automated — see [`.github/workflows/pages.yml`](.github/workflow
 
 - **Push to `main`** touching `site/` → links are checked, then the site deploys.
 - **Open a PR** touching `site/` → links are checked and the built site is attached to the run as a `site-preview` artifact you can download and open locally. Nothing goes live.
-- The link check fails the build if any page in `site/` points at a file that is not in `site/` — this is what stops a half-finished draft from being linked into the public handbook. Run it yourself with `./.github/scripts/check-links.sh`.
 
 Nothing outside `site/` is ever uploaded to Pages.
+
+## Checks
+
+Three workflows, none of which needs a build step or a dependency. Run any of them yourself.
+
+| | |
+|---|---|
+| [`pages.yml`](.github/workflows/pages.yml) | `site/` changed → link check, then deploy |
+| [`docs.yml`](.github/workflows/docs.yml) | `README.md`, `CLAUDE.md` or `work/` changed → link check, no deploy |
+| [`decisions.yml`](.github/workflows/decisions.yml) | `work/decisions/` changed → decision records checked, no deploy |
+
+```bash
+./.github/scripts/check-links.sh   # links
+./.github/scripts/check-adrs.sh    # decision records
+```
+
+[`check-links.sh`](.github/scripts/check-links.sh) enforces two rules. Inside `site/`, every
+relative link must resolve **inside `site/`** — a link that escapes, `../` included, fails the
+build, because nothing outside `site/` is uploaded and the link would 404. That is what stops a
+half-finished draft from being linked into the public handbook. Everywhere else — this file,
+`CLAUDE.md`, `work/` — a relative link must simply point at something that exists, so the repo's
+own description of itself cannot quietly rot.
+
+[`check-adrs.sh`](.github/scripts/check-adrs.sh) checks that the decision records are numbered,
+structured and cross-referenced, and refuses a change to a record that was already accepted.
 
 *Educational, not consultancy.*

@@ -8,7 +8,7 @@
 
 ### The problem
 
-The current module **DATDRD05-T05 – Decision Intelligence and AI Agents (DIAIA)** tries to do two jobs in seven weeks. It teaches the **business, strategic and ethical framing** of AI-supported decision-making, *and* it pushes students toward **building** a working agent prototype. The prototype is currently optional — it is only rewarded at grades 7–10 (see [module-overview.md](module-overview.md), lines 38, 103, 112). Yet the module is explicitly aimed at business students — *"not on building pipelines for programmers or AI Engineers"* (line 5). The build ambition therefore sits awkwardly against the audience: the students best placed to score top marks are the ones who can already code, which is not who the module is for.
+The current module **DATDRD05-T05 – Decision Intelligence and AI Agents (DIAIA)** tries to do two jobs in seven weeks. It teaches the **business, strategic and ethical framing** of AI-supported decision-making, *and* it pushes students toward **building** a working agent prototype. The prototype is currently optional — it is only rewarded at grades 7–10, where the rubric asks for a working, and then an advanced, agent. Yet the module is explicitly aimed at business students — *"not on building pipelines for programmers or AI Engineers"*. The build ambition therefore sits awkwardly against the audience: the students best placed to score top marks are the ones who can already code, which is not who the module is for.
 
 ### The fix
 
@@ -280,4 +280,6 @@ All groundings link into the AI Wiki at **[businessdatasolutions.github.io/ai-wi
 | is-rag-dead | synthesis | <https://businessdatasolutions.github.io/ai-wiki/syntheses/is-rag-dead> |
 | knowledge-architectures-for-llm-agents | synthesis | <https://businessdatasolutions.github.io/ai-wiki/syntheses/knowledge-architectures-for-llm-agents> |
 
-*Current module facts cited from [module-overview.md](module-overview.md). Author/organisation names (Martin, Oberholzer-Gee, Ransbotham, Brynjolfsson, Teece, Sinek, Webb, Dell'Acqua, Nishar & Nohria, Kiron–Schrage, Anand–Wu, Husain, Chase, Karpathy) have their own entity pages in the wiki under `/entities/`.*
+*Current module facts cited from the existing module description for DATDRD05-T05, recorded in Appendix A of the internal integrated LRD.*
+
+*Author/organisation names (Martin, Oberholzer-Gee, Ransbotham, Brynjolfsson, Teece, Sinek, Webb, Dell'Acqua, Nishar & Nohria, Kiron–Schrage, Anand–Wu, Husain, Chase, Karpathy) have their own entity pages in the wiki under `/entities/`.*
