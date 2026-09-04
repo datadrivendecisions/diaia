@@ -53,6 +53,5 @@ module, the proposal varies the *pedagogy* of DIAIA, and neither had noticed tha
 they disagree about what kind of course DIAIA is. Each record names one tension
 and puts a decision on the table.
 
-Neither source is linked from here. They sit in `project-documentation/`, which
-holds material that is not meant to be committed, so a link would break for
-anyone else who clones the repository.
+Neither source is linked from here. They sit in `project-documentation/`, off the
+site, and the integrated LRD in `site/` is the document that reads them together.

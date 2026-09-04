@@ -15,14 +15,14 @@ built by HAN students, in service of European competitiveness.
 
 ### `site/` — the public handbook
 - [`site/index.html`](site/index.html) — the handbook itself, and the single source of truth for its content
+- [`site/integrated-lrd.html`](site/integrated-lrd.html) — the integrated learning-requirements document for DIAIA and the AEAIS sister module, published at https://datadrivendecisions.github.io/diaia/integrated-lrd.html so it can be shared by link; its Appendix A records the current DIAIA module (formerly `module-overview.md`). Not linked from the handbook — it is a document for the module owners, not for students.
 
 ### `project-documentation/` — internal
-- [`project-documentation/integrated-lrd.html`](project-documentation/integrated-lrd.html) — the integrated learning-requirements document for DIAIA and the AEAIS sister module; its Appendix A records the current DIAIA module (formerly `module-overview.md`)
 - `module-redesign-sketches.md` — three paired sketches for splitting DIAIA into a business/society module and a technical sister module
 - `Voorstel Handbook DIAIA .pdf` — the original proposal
 
-These are in the repo but not on the site: open the LRD locally from a clone. It links
-out to the published handbook by URL, so those links work from anywhere.
+These are in the repo but not on the site. The LRD refers to them, and to the decision
+records, by their GitHub URLs, so those links work from the published page.
 
 ### `work/` — where we think
 - [`work/drafts/`](work/drafts/) — ideas being worked out, not yet fit for students. Transient: each draft is promoted to `site/` or abandoned.

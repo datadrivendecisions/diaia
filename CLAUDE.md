@@ -17,7 +17,7 @@ of the repo — see [`work/README.md`](work/README.md) for the working agreement
 
 - `site/` — everything here goes live at https://datadrivendecisions.github.io/diaia/
 - `work/` — drafts and exploration, staged before they reach the site
-- `project-documentation/` — internal documents (the LRD, the original proposal)
+- `project-documentation/` — internal documents (the redesign sketches, the original proposal)
 
 Only `site/` is published; the other two are in the repo but off the site. The repo is
 **public**, so nothing here is hidden — anything that genuinely cannot be public should
@@ -87,9 +87,12 @@ generator to keep one in sync.
 
 The page is organised as Part 1–5 plus Appendix A/B.
 
-`project-documentation/integrated-lrd.html` is a separate internal document (the
-learning-requirements document covering DIAIA and its AEAIS sister module). It is not published,
-and links to the handbook by its public URL so those links work from anywhere.
+`site/integrated-lrd.html` is a separate document for the module owners (the
+learning-requirements document covering DIAIA and its AEAIS sister module). It is published at
+`/integrated-lrd.html` so it can be shared with colleagues by link, but it is deliberately **not
+linked from the handbook** — students are not its audience. Everything it refers to outside
+`site/` (the sketches, the proposal PDF, the decision records) is linked by its GitHub URL, because
+a relative link to `project-documentation/` or `work/` would fail the publication gate.
 
 **Brand system.** Both HTML files carry their own inlined copy of the Business Data Solutions
 palette — identical `:root` custom-property blocks, ~24 tokens for colour, type scale, spacing,
