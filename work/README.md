@@ -9,8 +9,18 @@ sight — anything that genuinely cannot be public should not be committed at al
 
 ## What lives here
 
-Drafts and exploration: ideas being worked out that are not yet fit for students.
-The folder is empty whenever nothing is in flight.
+Two kinds of thing, with opposite lifecycles.
+
+**`drafts/`** — ideas being worked out that are not yet fit for students. Transient:
+each draft is either promoted to `site/` or abandoned, and the folder is empty
+whenever nothing is in flight.
+
+**`decisions/`** — the design decisions behind the module, recorded as they are
+taken. Permanent, and never promoted: they explain why `site/` looks the way it
+does, which is not something the handbook itself should say. An accepted record
+stops changing — you supersede it rather than edit it, and
+[`check-adrs.sh`](../.github/scripts/check-adrs.sh) enforces that in CI. See
+[`decisions/README.md`](decisions/README.md).
 
 ## Promoting work to the site
 
@@ -23,3 +33,5 @@ The folder is empty whenever nothing is in flight.
 
 Step 3 is the staging gate: if a page in `site/` still links to something left
 behind here, the build fails rather than shipping a dead link.
+
+Decision records are not part of this flow. They stay here for good.

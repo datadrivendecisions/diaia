@@ -1,0 +1,39 @@
+name: Check repo docs
+
+# check-links.sh has two rules. pages.yml runs it for the first — the publication
+# gate on site/. This workflow exists for the second: README.md, CLAUDE.md and
+# work/ describe the repo to whoever picks it up next, and they go stale the
+# moment a file moves. Without this they would only ever be checked as a
+# side-effect of an unrelated change to site/.
+#
+# Deliberately separate from pages.yml, which ends in a deploy: a change to
+# README.md should not publish the handbook.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'CLAUDE.md'
+      - 'work/**'
+      - '.github/scripts/check-links.sh'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'CLAUDE.md'
+      - 'work/**'
+      - '.github/scripts/check-links.sh'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./.github/scripts/check-links.sh

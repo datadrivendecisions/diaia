@@ -26,27 +26,51 @@ not be committed at all.
 Promote a draft by `git mv`-ing it from `work/` into `site/` and adding the link from the
 handbook — both steps, or the link check fails.
 
+## The decision record
+
+`work/decisions/` holds the design decisions behind the module — why DIAIA is shaped the way it
+is — as numbered ADRs. Curriculum decisions, not software architecture, but the form fits: a
+curriculum is revisited yearly, and the value is that next year's discussion starts from why last
+year's choice was made.
+
+The rule that makes them worth keeping: **an accepted record stops changing.** Change your mind by
+writing a new record that supersedes the old one and setting the old status to
+`Superseded by ADR-NNNN` — the only edit an accepted record may still receive.
+`check-adrs.sh` enforces this against the base commit in CI, so it is a gate rather than an
+honour system.
+
+Records live under `work/`, so they are off the site but still in a public repo: they name
+**roles**, never people, and carry no timetables or personal notes.
+
 ## Commands
 
 ```bash
-./.github/scripts/check-links.sh   # the one test: every relative link in site/ resolves inside site/
+./.github/scripts/check-links.sh   # publication gate: every relative link in site/ resolves inside site/
+./.github/scripts/check-adrs.sh    # decision records: numbering, structure, status, cross-references
+BASE_SHA=HEAD~1 ./.github/scripts/check-adrs.sh   # ...plus: no accepted record was edited
 python3 -m http.server -d site     # preview the site locally at :8000
 gh run list --workflow=pages.yml   # deploy status
 ```
 
-`check-links.sh` is the publication gate and runs in CI on every push and PR touching `site/`.
-It fails when a page in `site/` points at a file that is not in `site/` — which is exactly what
-happens when you link to a draft still sitting in `work/`. Run it before pushing.
+`check-links.sh` enforces two separate rules. Inside `site/` it is the **publication gate**: every
+relative link must resolve *inside* `site/`, and a link that escapes — `../` included — fails the
+build, because nothing outside `site/` is uploaded and the link would 404 on Pages. That is exactly
+what happens when you link to a draft still sitting in `work/`. Outside `site/` — `README.md`,
+`CLAUDE.md`, `work/` — the rule is weaker: a relative link must point at something that exists, so
+the repo's own description of itself cannot rot when a file moves. Run it before pushing.
 
 ## Deployment
 
-[`.github/workflows/pages.yml`](.github/workflows/pages.yml) uploads `site/` and nothing else.
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) uploads `site/` and nothing else. Two
+further workflows check things that are never published and therefore never deploy.
 
 | Event | Result |
 |---|---|
 | Push to `main` touching `site/` | Link check → deploy |
 | PR touching `site/` | Link check → downloadable `site-preview` artifact, no deploy |
-| Changes only in `work/` | No run at all |
+| Push or PR touching `work/decisions/` | ADR check — [`decisions.yml`](.github/workflows/decisions.yml) — plus the doc link check. Never deploys |
+| Push or PR touching `README.md`, `CLAUDE.md` or `work/` | Link check only — [`docs.yml`](.github/workflows/docs.yml). Never deploys |
+| Anything else | No run at all |
 
 Pages is configured with `build_type: workflow`, not deploy-from-branch. Do not switch it back:
 the legacy branch build serves the repo root, which no longer holds `index.html`, so it would
