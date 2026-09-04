@@ -16,11 +16,12 @@ rather than shipping a bug.
 of the repo — see [`work/README.md`](work/README.md) for the working agreement.
 
 - `site/` — everything here goes live at https://datadrivendecisions.github.io/diaia/
-- `work/` — sources, drafts, exploration. Present in git, never on the site.
-- `project-documentation/` — gitignored, contains personal data (GDPR). Never commit it.
+- `work/` — drafts and exploration, staged before they reach the site
+- `project-documentation/` — internal documents (the LRD, the original proposal)
 
-The repo is **public**, so `work/` is hidden from the site but readable by anyone browsing
-GitHub. It is not a place for confidential material.
+Only `site/` is published; the other two are in the repo but off the site. The repo is
+**public**, so nothing here is hidden — anything that genuinely cannot be public should
+not be committed at all.
 
 Promote a draft by `git mv`-ing it from `work/` into `site/` and adding the link from the
 handbook — both steps, or the link check fails.
@@ -54,18 +55,17 @@ already enabled — it was set once via `gh api -X PUT repos/datadrivendecisions
 
 ## Content architecture
 
-**Two copies of the handbook, kept in sync by hand.** `work/ai-for-smes-programme.md` is the
-Markdown source; `site/index.html` is the published, styled version, and since 827f32a it is
-canonical. There is no generator between them. A content edit to the handbook must be made in
-both files, or they drift — the repo has already lost one duplicate copy (`ai-for-smes-programme.html`)
-that existed for exactly this reason. HTML-only changes (markup, styling, link targets) do not
-belong in the Markdown.
+**`site/index.html` is the only copy of the handbook.** Edit the content there. The repo twice
+carried a second copy that had to be updated by hand alongside it — `ai-for-smes-programme.html`
+(removed in 827f32a) and `ai-for-smes-programme.md` (removed once its content was confirmed to be
+fully present in the HTML). Do not reintroduce a parallel Markdown or HTML version; there is no
+generator to keep one in sync.
 
-Both files follow the same skeleton — Part 1–5 plus Appendix A/B — so matching sections up is
-straightforward.
+The page is organised as Part 1–5 plus Appendix A/B.
 
-`site/integrated-lrd.html` is a separate document (the learning-requirements document covering
-DIAIA and its AEAIS sister module) and links into the handbook.
+`project-documentation/integrated-lrd.html` is a separate internal document (the
+learning-requirements document covering DIAIA and its AEAIS sister module). It is not published,
+and links to the handbook by its public URL so those links work from anywhere.
 
 **Brand system.** Both HTML files carry their own inlined copy of the Business Data Solutions
 palette — identical `:root` custom-property blocks, ~24 tokens for colour, type scale, spacing,
