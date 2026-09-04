@@ -4,8 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A living handbook teaching regional manufacturing SMEs to apply AI, written for and by HAN
-students. It is prose, not software: two hand-authored static HTML pages with inlined CSS,
+The course site for two HAN modules — AIBS and AEL — that share one team and one deliverable: a
+living handbook teaching regional manufacturing SMEs to apply AI. It is prose, not software: three
+hand-authored static HTML pages with inlined CSS,
 no build step, no dependencies, no package manager, no test framework. Most "development"
 here is editing content, and the risk to manage is publishing something that is not ready
 rather than shipping a bug.
@@ -79,27 +80,39 @@ already enabled — it was set once via `gh api -X PUT repos/datadrivendecisions
 
 ## Content architecture
 
-**`site/index.html` is the only copy of the handbook.** Edit the content there. The repo twice
-carried a second copy that had to be updated by hand alongside it — `ai-for-smes-programme.html`
-(removed in 827f32a) and `ai-for-smes-programme.md` (removed once its content was confirmed to be
-fully present in the HTML). Do not reintroduce a parallel Markdown or HTML version; there is no
-generator to keep one in sync.
+**`site/index.html` is the course landing page**: the two modules in the terms the LRD already
+publishes, a link to the handbook, placeholders for the weekly programme and the shared quality bar,
+and a link to the LRD under a heading that says it is for the module owners. Do not put on it
+anything a decision record still holds as Proposed.
 
-The page is organised as Part 1–5 plus Appendix A/B.
+**`site/handbook.html` is the handbook's template, not the handbook.** It holds the shell every
+cohort fills — start here, the theme index, the chapter template, the tooling index, the regional
+ecosystem section, and the quality bar with the disclaimer — with placeholders (class `tpl`) where
+content goes. The programme design the page used to carry (mission, curriculum, seven themes with
+readings, partners, roadmap) is **superseded by the LRD** and lives only in git history; the
+handbook's own requirements will come from the PRD each team writes in AEL. Do not put programme
+design back on this page — it belongs in the LRD — and do not name people on it.
+
+The repo twice carried a second copy of the handbook page that had to be updated by hand alongside it —
+`ai-for-smes-programme.html` (removed in 827f32a) and `ai-for-smes-programme.md` (removed once its
+content was confirmed to be fully present in the HTML). Do not reintroduce a parallel Markdown or
+HTML version; there is no generator to keep one in sync.
+
+The page is organised as the sections a reader of the finished handbook would see, in reading order.
 
 `site/integrated-lrd.html` is a separate document for the module owners (the
 learning-requirements document covering AIBS and its AEL sister module). It is published at
-`/integrated-lrd.html` so it can be shared with colleagues by link, but it is deliberately **not
-linked from the handbook** — students are not its audience. Everything it refers to outside
+`/integrated-lrd.html` so it can be shared with colleagues by link. The landing page links it under
+a "for the module owners" heading; the handbook does **not** link it — students are not its audience. Everything it refers to outside
 `site/` (the sketches, the proposal PDF, the decision records) is linked by its GitHub URL, because
 a relative link to `project-documentation/` or `work/` would fail the publication gate.
 
-**Brand system.** Both HTML files carry their own inlined copy of the Business Data Solutions
+**Brand system.** All three HTML files carry their own inlined copy of the Business Data Solutions
 palette — identical `:root` custom-property blocks, ~24 tokens for colour, type scale, spacing,
 shadows and radii. The `stylebook/shared.css` named in the source comment is not in this repo.
-A palette change means editing both files; use the tokens rather than hard-coded values.
+A palette change means editing all three files; use the tokens rather than hard-coded values.
 
-Neither page has any JavaScript. Keep it that way unless there is a reason not to.
+No page has any JavaScript. Keep it that way unless there is a reason not to.
 
 ## Conventions
 

@@ -1,9 +1,9 @@
-# AI for SMEs — AIBS Programme & Living Handbook
+# AI for SMEs — Handbook
 
-A living, interactive handbook helping regional manufacturing SMEs put AI to work —
-built by HAN students, in service of European competitiveness.
+The course site for two HAN modules that share one team and one deliverable: a living handbook
+helping regional manufacturing SMEs put AI to work.
 
-**Read it:** https://datadrivendecisions.github.io/diaia/
+**Site:** https://datadrivendecisions.github.io/diaia/ · **Handbook template:** https://datadrivendecisions.github.io/diaia/handbook.html
 
 The modules are **AIBS** (AI in Business & Society, the research track) and **AEL** (Agent
 Engineering Lab, the technical track). The repository and its URL keep the `diaia` slug the
@@ -17,9 +17,10 @@ project started with, so that no shared link breaks.
 | [`work/`](work/) | **Not published.** Drafts on their way to the site, and the decisions behind the module. |
 | [`project-documentation/`](project-documentation/) | **Not published.** Internal project documents, tracked in git. |
 
-### `site/` — the public handbook
-- [`site/index.html`](site/index.html) — the handbook itself, and the single source of truth for its content
-- [`site/integrated-lrd.html`](site/integrated-lrd.html) — the integrated learning-requirements document for AIBS and the AEL sister module, published at https://datadrivendecisions.github.io/diaia/integrated-lrd.html so it can be shared by link; its Appendix A records the module as it runs today. Not linked from the handbook — it is a document for the module owners, not for students.
+### `site/` — the course site
+- [`site/index.html`](site/index.html) — the landing page for the combined AIBS / AEL course: the two modules, the handbook, and placeholders for the weekly programme and the shared quality bar
+- [`site/handbook.html`](site/handbook.html) — the handbook's **template**: the shell every cohort fills (start here, the theme index, the chapter anatomy, tooling, ecosystem, quality bar and disclaimer). The programme design the handbook page used to carry — mission, curriculum, seven themes with readings, partners, roadmap — is superseded by the LRD and lives only in git history; the handbook's own requirements come from the PRD each team writes in AEL
+- [`site/integrated-lrd.html`](site/integrated-lrd.html) — the integrated learning-requirements document for AIBS and AEL, published at https://datadrivendecisions.github.io/diaia/integrated-lrd.html so it can be shared by link; its Appendix A records the module as it runs today. Written for the module owners, not for students; the landing page links it under that heading, and the handbook does not link it at all.
 
 ### `project-documentation/` — internal
 - `module-redesign-sketches.md` — three paired sketches for splitting the current module into a business/society module and a technical sister module
