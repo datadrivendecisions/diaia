@@ -1,5 +1,7 @@
 # DIAIA Redesign + Technical Sister Module — Three Paired Sketches
 
+> Written when the modules were still called DIAIA and AEAIS. They are now AIBS (AI in Business & Society) and AEL (Agent Engineering Lab) — see ADR-0008 in `work/decisions/`. The names below are left as they were.
+
 *A design document for the Minor Data Driven Decision Making (HAN University of Applied Sciences). Three alternative ways to split the current DIAIA module into a refocused business/economic/societal module plus a new, more technical sister module. Grounded in the AI Wiki — browse it at [businessdatasolutions.github.io/ai-wiki](https://businessdatasolutions.github.io/ai-wiki). Every "Wiki grounding" below links to its source page; a full index sits at the end.*
 
 ---

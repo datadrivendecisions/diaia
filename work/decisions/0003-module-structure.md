@@ -7,7 +7,7 @@ Proposed
 ## Context
 
 The redesign sketches propose splitting the current module in two: a refocused
-DIAIA covering business, economic and societal aspects, and a new technical
+AIBS covering business, economic and societal aspects, and a new technical
 sister module owning the build work. Each is a module in its own right, with its
 own learning outcomes and its own assessment.
 
@@ -78,6 +78,6 @@ separately and scoring independently before comparing.
 - Scoring independently before comparing must be an explicit instruction in the
   assessment procedure, or the halo risk is unmitigated in practice.
 
-This record depends on ADR-0001, which establishes that DIAIA is a research
+This record depends on ADR-0001, which establishes that AIBS is a research
 module with a distinct perspective worth examining separately.
 

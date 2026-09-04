@@ -28,7 +28,7 @@ handbook — both steps, or the link check fails.
 
 ## The decision record
 
-`work/decisions/` holds the design decisions behind the module — why DIAIA is shaped the way it
+`work/decisions/` holds the design decisions behind the module — why AIBS is shaped the way it
 is — as numbered ADRs. Curriculum decisions, not software architecture, but the form fits: a
 curriculum is revisited yearly, and the value is that next year's discussion starts from why last
 year's choice was made.
@@ -88,7 +88,7 @@ generator to keep one in sync.
 The page is organised as Part 1–5 plus Appendix A/B.
 
 `site/integrated-lrd.html` is a separate document for the module owners (the
-learning-requirements document covering DIAIA and its AEAIS sister module). It is published at
+learning-requirements document covering AIBS and its AEL sister module). It is published at
 `/integrated-lrd.html` so it can be shared with colleagues by link, but it is deliberately **not
 linked from the handbook** — students are not its audience. Everything it refers to outside
 `site/` (the sketches, the proposal PDF, the decision records) is linked by its GitHub URL, because
@@ -102,6 +102,11 @@ A palette change means editing both files; use the tokens rather than hard-coded
 Neither page has any JavaScript. Keep it that way unless there is a reason not to.
 
 ## Conventions
+
+The modules are **AIBS** (AI in Business & Society, the research track) and **AEL** (Agent
+Engineering Lab, the technical track). They were DIAIA and AEAIS until ADR-0008. The repo slug,
+the Pages URL, the registered course code in the LRD's Appendix A, the proposal PDF and the
+redesign sketches keep the old names on purpose; do not "fix" those.
 
 Prose is British-leaning English with em dashes. The handbook positions itself as *educational,
 not consultancy* — a framing that recurs in the content and is worth preserving.

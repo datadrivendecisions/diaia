@@ -82,7 +82,7 @@ its evidence base, not the rubric.
   down, and the criteria must say so explicitly or the outcome will be
   contested.
 - The role-relevance reflection presumes the four build roles from the technical
-  module, so a student taking DIAIA without the sister module needs an
+  module, so a student taking AIBS without the sister module needs an
   alternative question. Under ADR-0003 the modules are formally separate, so this
   case will occur.
 - Combined with ADR-0005, a student may hold a mark for research skills without

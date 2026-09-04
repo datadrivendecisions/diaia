@@ -9,7 +9,7 @@ Proposed
 The redesign sketches derive their authority from the AI Wiki. Every week in
 every variant links to a wiki concept or synthesis page, and the document closes
 with a source index of the twenty-four pages it cites. The seam along which the
-module is split — strategic/organisational and economic/labour to DIAIA,
+module is split — strategic/organisational and economic/labour to AIBS,
 engineering/practitioner to the sister module — is itself a description of how
 the wiki is organised. That grounding is what makes the sketches a curriculum
 proposal rather than a list of interesting topics.

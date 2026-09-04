@@ -6,16 +6,16 @@ Proposed
 
 ## Context
 
-Two proposals for the redesigned DIAIA are on the table, and they differ on an
+Two proposals for the redesigned AIBS are on the table, and they differ on an
 axis neither document names.
 
 The three redesign sketches vary the
 technical ambition of a new sister module — no-code, light Python, agentic
-engineering — and fill DIAIA in as a **taught** course on the business, economic
+engineering — and fill AIBS in as a **taught** course on the business, economic
 and societal aspects of AI. Every week has a topic and a grounding in the AI
 Wiki. The lecturer covers the material; students apply it in a CRISP-DM report.
 
-The parallel proposal from the research lecturer casts DIAIA as a **research
+The parallel proposal from the research lecturer casts AIBS as a **research
 module**. Students learn applied-research skills — problem analysis, internal
 and external analysis, source appraisal, field research, translating findings
 into advice — and the handbook itself is the deliverable. Content is not fixed
@@ -57,7 +57,7 @@ research work.
 
 ## Decision
 
-DIAIA becomes a research module with a fixed thematic spine: each week has a set
+AIBS becomes a research module with a fixed thematic spine: each week has a set
 theme with wiki grounding, opened plenary, within which teams conduct their own
 research and produce a handbook contribution.
 

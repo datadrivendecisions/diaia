@@ -7,7 +7,7 @@ Proposed
 ## Context
 
 The three redesign sketches assume a uniform **seven-week** programme for both
-DIAIA and its sister module, chosen to match the current module's shape so the
+AIBS and its sister module, chosen to match the current module's shape so the
 two can run sequentially or in parallel.
 
 The research lecturer's proposal assumes **six teaching weeks covering five
@@ -61,7 +61,7 @@ must not fall in the same week as the consolidation deadline.
 
 - One of the themes identified in the redesign work does not get its own week and
   must be dropped, merged into another, or offered as optional material.
-- DIAIA and a seven-week sister module no longer align week for week. Under a
+- AIBS and a seven-week sister module no longer align week for week. Under a
   tight shared-project design this creates friction; see ADR-0003 and ADR-0006.
 - Week 7 needs its own didactic design — an editorial workflow, an owner for the
   final text, and a decision on what happens to material that does not make the

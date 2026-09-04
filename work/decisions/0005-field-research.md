@@ -6,7 +6,7 @@ Proposed
 
 ## Context
 
-Under ADR-0001 DIAIA is a research module, and the research lecturer's list of
+Under ADR-0001 AIBS is a research module, and the research lecturer's list of
 what applied research requires includes *"you must be able to do field research
 to gather new data"*. Several of the proposed themes are answerable only from the
 field: what knowledge is present and missing at regional SMEs, where they see
