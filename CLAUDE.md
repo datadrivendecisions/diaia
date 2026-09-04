@@ -17,7 +17,7 @@ of the repo — see [`work/README.md`](work/README.md) for the working agreement
 
 - `site/` — everything here goes live at https://datadrivendecisions.github.io/diaia/
 - `work/` — drafts and exploration, staged before they reach the site
-- `project-documentation/` — internal documents (the redesign sketches, the original proposal)
+- `project-documentation/` — internal documents (the redesign sketches, the original proposal, the LRD logbook)
 
 Only `site/` is published; the other two are in the repo but off the site. The repo is
 **public**, so nothing here is hidden — anything that genuinely cannot be public should
@@ -104,9 +104,13 @@ Neither page has any JavaScript. Keep it that way unless there is a reason not t
 ## Conventions
 
 The modules are **AIBS** (AI in Business & Society, the research track) and **AEL** (Agent
-Engineering Lab, the technical track). They were DIAIA and AEAIS until ADR-0008. The repo slug,
-the Pages URL, the registered course code in the LRD's Appendix A, the proposal PDF and the
-redesign sketches keep the old names on purpose; do not "fix" those.
+Engineering Lab, the technical track). The names the project started with survive only in the repo
+slug and Pages URL, in ADR-0008, and in the proposal PDF and the redesign sketches, which are source
+documents. Do not reintroduce them anywhere else, and never in `site/`.
+
+**The LRD does not track its own changes.** It carries a version number and a date, nothing
+more. What changed in each version, and why, goes in `project-documentation/lrd-logbook.md`.
+Bump the version and add a logbook entry together.
 
 Prose is British-leaning English with em dashes. The handbook positions itself as *educational,
 not consultancy* — a framing that recurs in the content and is worth preserving.

@@ -1,6 +1,6 @@
 # Decision records
 
-Design decisions for the AIBS redesign (the module was called DIAIA until ADR-0008) and its technical sister module AEL, recorded
+Design decisions for the AIBS redesign and its technical sister module AEL, recorded
 as they are taken. These are curriculum decisions, not software architecture, but
 the form fits: a curriculum is revisited every year, and the value of a record is
 that next year's discussion can start from why last year's choice was made rather

@@ -62,18 +62,18 @@ cite it say which module it refers to.
 
 ## Consequences
 
-- Every document the module owns is updated: the handbook, the LRD (bumped to
-  v1.2), the earlier decision records (all still Proposed, so they may change),
-  the repository's own description of itself.
+- Every document the module owns is updated: the handbook, the LRD, the
+  earlier decision records (all still Proposed, so they may change), the
+  repository's own description of itself. The previous names appear in none of
+  them; this record and a note at the top of the sketches hold the mapping.
 - The proposal PDF and the redesign sketches keep the old names. They are
   source documents written before this decision, and rewriting them would
   falsify the sources the other records cite. A note at the top of the sketches
   maps the old names to the new ones.
 - The repository slug and the published URL stay `diaia`. Changing them breaks
   every link already shared; the handbook's own address is not worth moving for
-  a name. The current DIAIA module keeps its registered course code until the
-  programme changes it; Appendix A of the LRD records that module under its
-  registered name.
-- Two names will circulate for at least one cohort. Every first mention in a
-  document carries "formerly DIAIA" or "formerly AEAIS" until the old names are
-  no longer recognised.
+  a name. The module keeps its registered course code until the programme
+  changes it; Appendix A of the LRD records the module by that code.
+- Two names will circulate for at least one cohort, and the published documents
+  do not explain the old ones. Whoever introduces the modules to a group that
+  knows the previous names has to make the connection in person.

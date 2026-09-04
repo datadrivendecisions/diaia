@@ -6,8 +6,8 @@ built by HAN students, in service of European competitiveness.
 **Read it:** https://datadrivendecisions.github.io/diaia/
 
 The modules are **AIBS** (AI in Business & Society, the research track) and **AEL** (Agent
-Engineering Lab, the technical track). They were called DIAIA and AEAIS until ADR-0008; the
-repository and its URL keep the `diaia` slug so that no shared link breaks.
+Engineering Lab, the technical track). The repository and its URL keep the `diaia` slug the
+project started with, so that no shared link breaks.
 
 ## Repo layout
 
@@ -19,11 +19,12 @@ repository and its URL keep the `diaia` slug so that no shared link breaks.
 
 ### `site/` — the public handbook
 - [`site/index.html`](site/index.html) — the handbook itself, and the single source of truth for its content
-- [`site/integrated-lrd.html`](site/integrated-lrd.html) — the integrated learning-requirements document for AIBS and the AEL sister module, published at https://datadrivendecisions.github.io/diaia/integrated-lrd.html so it can be shared by link; its Appendix A records the current DIAIA module (formerly `module-overview.md`). Not linked from the handbook — it is a document for the module owners, not for students.
+- [`site/integrated-lrd.html`](site/integrated-lrd.html) — the integrated learning-requirements document for AIBS and the AEL sister module, published at https://datadrivendecisions.github.io/diaia/integrated-lrd.html so it can be shared by link; its Appendix A records the module as it runs today. Not linked from the handbook — it is a document for the module owners, not for students.
 
 ### `project-documentation/` — internal
-- `module-redesign-sketches.md` — three paired sketches for splitting DIAIA into a business/society module and a technical sister module
+- `module-redesign-sketches.md` — three paired sketches for splitting the current module into a business/society module and a technical sister module
 - `Voorstel Handbook DIAIA .pdf` — the original proposal
+- [`project-documentation/lrd-logbook.md`](project-documentation/lrd-logbook.md) — what changed in the LRD and why, per version. The LRD itself carries only a version number and date.
 
 These are in the repo but not on the site. The LRD refers to them, and to the decision
 records, by their GitHub URLs, so those links work from the published page.
