@@ -69,7 +69,7 @@ further workflows check things that are never published and therefore never depl
 | Push to `main` touching `site/` | Link check → deploy |
 | PR touching `site/` | Link check → downloadable `site-preview` artifact, no deploy |
 | Push or PR touching `work/decisions/` | ADR check — [`decisions.yml`](.github/workflows/decisions.yml) — plus the doc link check. Never deploys |
-| Push or PR touching `README.md`, `CLAUDE.md` or `work/` | Link check only — [`docs.yml`](.github/workflows/docs.yml). Never deploys |
+| Push or PR touching `README.md`, `CLAUDE.md` or `work/` | Link check — [`links.yml`](.github/workflows/links.yml). Never deploys |
 | Anything else | No run at all |
 
 Pages is configured with `build_type: workflow`, not deploy-from-branch. Do not switch it back:

@@ -46,7 +46,7 @@ Three workflows, none of which needs a build step or a dependency. Run any of th
 | | |
 |---|---|
 | [`pages.yml`](.github/workflows/pages.yml) | `site/` changed → link check, then deploy |
-| [`docs.yml`](.github/workflows/docs.yml) | `README.md`, `CLAUDE.md` or `work/` changed → link check, no deploy |
+| [`links.yml`](.github/workflows/links.yml) | `README.md`, `CLAUDE.md` or `work/` changed → link check, no deploy |
 | [`decisions.yml`](.github/workflows/decisions.yml) | `work/decisions/` changed → decision records checked, no deploy |
 
 ```bash
@@ -60,6 +60,10 @@ build, because nothing outside `site/` is uploaded and the link would 404. That 
 half-finished draft from being linked into the public handbook. Everywhere else — this file,
 `CLAUDE.md`, `work/` — a relative link must simply point at something that exists, so the repo's
 own description of itself cannot quietly rot.
+
+Both `pages.yml` and `links.yml` run the whole script, so either can fail on either rule — a
+broken link in `site/` will fail the `links.yml` run too. That is deliberate: one script that
+always checks everything is harder to slip past than two that each check half.
 
 [`check-adrs.sh`](.github/scripts/check-adrs.sh) checks that the decision records are numbered,
 structured and cross-referenced, and refuses a change to a record that was already accepted.
