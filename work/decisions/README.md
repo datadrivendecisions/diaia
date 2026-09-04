@@ -40,6 +40,8 @@ decision — the point is to force a yes or a no, not to host an open question.
 | 0006 | [What the sister module builds — a client prototype or the research platform](0006-what-the-sister-module-builds.md) | Proposed |
 | 0007 | [Assessing individuals when the deliverable is one collective handbook](0007-individual-assessment.md) | Proposed |
 | 0008 | [Module names — AIBS and AEL replace DIAIA and AEAIS](0008-module-names.md) | Proposed |
+| 0009 | [The AEL build environment — students bring their own agentic CLI](0009-build-environment.md) | Proposed |
+| 0010 | [The AEL arc — two spines, one element a week, from vibe coding to agentic engineering](0010-ael-arc.md) | Proposed |
 
 ADR-0001 is the keystone. ADR-0002, ADR-0003 and ADR-0006 follow from it and
 should not be accepted before it is.
